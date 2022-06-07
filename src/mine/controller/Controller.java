@@ -1,6 +1,8 @@
 package mine.controller;
 
+
 import mine.model.Tile;
+import mine.view.Frame;
 
 public class Controller 
 {
@@ -8,8 +10,10 @@ public class Controller
 	private int cols = 9;
 	private int mines = 10;
 	private Tile [][] grid = new Tile [rows][cols]; 
+	private Frame frame;
 	public Controller()
 	{
+		this.frame = new Frame(this);
 		for (int index = 0; index < grid.length; index++)
 		{
 			for (int inIndex = 0; inIndex < grid[0].length; inIndex++)

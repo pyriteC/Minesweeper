@@ -28,18 +28,26 @@ public class Tile
 		return adjMine;
 	}
 	
-	public String getAdjMineString()
+	public String getAdjMineString() 
 	{
-		if (adjMine == 0)
+		if (!isMine)
 		{
-			return "";
+			if (adjMine == 0) 
+			{
+				return "";
+			} 
+			else 
+			{
+
+				return Integer.toString(adjMine);
+			}
 		}
-		else
+		else 
 		{
-			 
-			return Integer.toString(adjMine);
+			return "x";
 		}
 	}
+
 
 	public void setAdjMine(int adjMine) {
 		this.adjMine = adjMine;

@@ -24,13 +24,15 @@ private JPanel buttonPanel;
 		buttonGrid = new JButton [app.getRows()][app.getCols()];
 		buttonPanel = new JPanel( new GridLayout(app.getCols(),app.getRows()));
 		setUpButtonGrid();
+		setUpButtonPanel();
 		setupPanel();
 		setupListeners();
 		setupLayout();
 		
 	}
 
-	private void setUpButtonGrid() {
+	private void setUpButtonGrid() 
+	{
 		for (int index = 0; index < buttonGrid.length; index++)
 		{
 			for (int inIndex = 0; inIndex < buttonGrid[0].length; inIndex++)
@@ -40,11 +42,22 @@ private JPanel buttonPanel;
 			}
 		}
 	}
+	private void setUpButtonPanel()
+	{
+		for (int index = 0; index < buttonGrid.length; index++)
+		{
+			for (int inIndex = 0; inIndex < buttonGrid[0].length; inIndex++)
+			{
+				buttonPanel.add(buttonGrid[index][inIndex]);
+			}
+		}
+	}
 	
 	private void setupPanel()
 	{
 		this.setLayout(layout);
 		this.setBackground(new Color(10, 100, 10 ));
+		this.add(buttonPanel);
 	}
 	
 	private void setupListeners()

@@ -13,16 +13,15 @@ public class Controller
 	private Frame frame;
 	public Controller()
 	{
-		this.frame = new Frame(this);
 		for (int index = 0; index < grid.length; index++)
 		{
 			for (int inIndex = 0; inIndex < grid[0].length; inIndex++)
 			{
-				Tile temp = new Tile(false);
-				grid[index][inIndex] = temp;
+				grid[index][inIndex] = new Tile(false);
 			}
 		}
 		placeMines();
+		this.frame = new Frame(this);
 	}
 	
 	public void start ()

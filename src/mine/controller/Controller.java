@@ -6,9 +6,9 @@ import mine.view.Frame;
 
 public class Controller 
 {
-	private int rows = 9;
-	private int cols = 9;
-	private int mines = 10;
+	private int rows = 10;
+	private int cols = 10;
+	private int mines = 14;
 	public Tile [][] grid = new Tile [rows][cols]; 
 	private Frame frame;
 	public Controller()
@@ -24,18 +24,15 @@ public class Controller
 		this.frame = new Frame(this);
 	}
 	
-	public void start ()
-	{
-		
-	}
-	
+
 	private void placeMines()
 	{
-		int randRow = (int) (Math.random() * rows);
-		int randCol = (int) (Math.random() * cols);
+		
 		for (int index = 0; index < mines; index++)
 		{
-			while(grid[randCol][randRow].isMine());
+			int randRow = (int) (Math.random() * rows);
+			int randCol = (int) (Math.random() * cols);
+			while(grid[randRow][randCol].isMine());
 			{
 				randRow = (int) (Math.random() * rows);
 				randCol = (int) (Math.random() * cols);
@@ -75,8 +72,9 @@ public class Controller
 			{
 				grid[randRow-1][randCol -1].increment();//topLeft
 			}
-				
+
 		}
+		System.out.println("fin");
 	}
 
 	public int getRows() {
@@ -102,7 +100,4 @@ public class Controller
 	public void setMines(int mines) {
 		this.mines = mines;
 	}
-
-
-
 }

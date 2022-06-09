@@ -26,8 +26,8 @@ private JPanel buttonPanel;
 		setUpButtonGrid();
 		setUpButtonPanel();
 		setupPanel();
-		setupListeners();
-		setupLayout();
+//		setupListeners();
+//		setupLayout();
 		
 	}
 

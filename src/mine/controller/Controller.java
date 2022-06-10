@@ -6,9 +6,9 @@ import mine.view.Frame;
 
 public class Controller 
 {
-	private int rows = 10;
-	private int cols = 10;
-	private int mines = 14;
+	private int rows = 15;
+	private int cols = 15;
+	private int mines = 30;
 	public Tile [][] grid = new Tile [rows][cols]; 
 	private Frame frame;
 	public Controller()
@@ -32,45 +32,39 @@ public class Controller
 		{
 			int randRow = (int) (Math.random() * rows);
 			int randCol = (int) (Math.random() * cols);
-			while(grid[randRow][randCol].isMine());
-			{
-				randRow = (int) (Math.random() * rows);
-				randCol = (int) (Math.random() * cols);
-			}
-			grid[randRow][randCol].setMine(true);
 			
-			
-			if (randRow > 0)
-			{
-				grid[randRow-1][randCol].increment();//top
+			if (!grid[randRow][randCol].isMine()) {
+				grid[randRow][randCol].setMine(true);
+
+				if (randRow > 0) {
+					grid[randRow - 1][randCol].increment();// top
+				}
+				if (randRow > 0 && randCol < cols - 1) {
+					grid[randRow - 1][randCol + 1].increment();// topRight
+				}
+				if (randCol < cols - 1) {
+					grid[randRow][randCol + 1].increment();// right
+				}
+				if (randCol < cols - 1 && randRow < rows - 1) {
+					grid[randRow + 1][randCol + 1].increment();// bottomRight
+				}
+				if (randRow < rows - 1) {
+					grid[randRow + 1][randCol].increment();// bottom
+				}
+				if (randRow < rows - 1 && randCol > 0) {
+					grid[randRow + 1][randCol - 1].increment();// bottomLeft
+				}
+				if (randCol > 0) {
+					grid[randRow][randCol - 1].increment();// left
+				}
+				if (randCol > 0 && randRow > 0) {
+					grid[randRow - 1][randCol - 1].increment();// topLeft
+				}
+				
 			}
-			if (randRow > 0 && randCol <cols -1)
+			else 
 			{
-				grid[randRow-1][randCol +1].increment();//topRight
-			}
-			if (randCol < cols -1)
-			{
-				grid[randRow][randCol +1].increment();//right
-			}
-			if (randCol < cols -1 && randRow < rows -1)
-			{
-				grid[randRow+1][randCol +1].increment();//bottomRight
-			}
-			if (randRow < rows -1)
-			{
-				grid[randRow+1][randCol].increment();//bottom
-			}
-			if (randRow < rows -1 && randCol >0)
-			{
-				grid[randRow+1][randCol-1].increment();//bottomLeft
-			}
-			if (randCol > 0)
-			{
-				grid[randRow][randCol-1].increment();//left
-			}
-			if (randCol > 0 && randRow > 0)
-			{
-				grid[randRow-1][randCol -1].increment();//topLeft
+				index --;
 			}
 
 		}
